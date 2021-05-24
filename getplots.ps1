@@ -158,7 +158,7 @@ try
 									Write-Host "Removing of file $($difference.Remote.FileName) failed."
 								}
 							Write-Host "Replacing extension."
-							Get-ChildItem $transfer.Destination | Rename-Item -NewName { $_.name -Replace '\.plot$','.plot.2' }
+                            Move-Item -Path $transfer.Destination –Destination ([io.path]::ChangeExtension($path, '.plot.2'))
                             Write-Host "Done."
 							
                         }
